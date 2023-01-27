@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import dam.ipt.jogodogalo.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class Jogo : AppCompatActivity() {
 
     enum class Turn
     {
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBoard()
+
     }
 
 
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         boardList.add(binding.c1)
         boardList.add(binding.c2)
         boardList.add(binding.c3)
+
     }
 
     fun boardTapped(view: View)

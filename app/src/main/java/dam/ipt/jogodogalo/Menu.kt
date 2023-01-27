@@ -3,14 +3,17 @@ package dam.ipt.jogodogalo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_menu.*
+import dam.ipt.jogodogalo.databinding.ActivityMenuBinding
 
 class Menu : AppCompatActivity() {
+    private lateinit var binding : ActivityMenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
+        binding = ActivityMenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        Btn1.setOnClickListener{
+        binding.Btn1.setOnClickListener{
 
             Jogar()
         }

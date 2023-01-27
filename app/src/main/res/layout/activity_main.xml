@@ -10,7 +10,6 @@
         android:id="@+id/turnTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Turn X"
         android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintLeft_toLeftOf="parent"

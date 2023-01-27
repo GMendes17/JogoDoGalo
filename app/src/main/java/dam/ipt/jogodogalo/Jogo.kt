@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import dam.ipt.jogodogalo.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class Jogo : AppCompatActivity() {
 
@@ -18,8 +19,8 @@ class Jogo : AppCompatActivity() {
     private var firstTurn = Turn.jogador1
     private var currentTurn = Turn.jogador1
 
-    private var crossesScore = 0
-    private var noughtsScore = 0
+    private var PontoJgdr1 = 0
+    private var PontoJgdr2 = 0
 
     private var boardList = mutableListOf<Button>()
 
@@ -31,6 +32,7 @@ class Jogo : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBoard()
+        turnTV.text = "Vez " + currentTurn.toString()
 
     }
 
@@ -57,19 +59,19 @@ class Jogo : AppCompatActivity() {
 
         if(checkForVictory(NOUGHT))
         {
-            noughtsScore++
-            result("Noughts Win!")
+            PontoJgdr2++
+            result("Jogador 1 Ganha")
         }
         else if(checkForVictory(CROSS))
         {
-            crossesScore++
-            result("Crosses Win!")
+            PontoJgdr1++
+            result("Jogador 2 Ganha")
+        }else if(fullBoard())
+        {
+            result("Empate")
         }
 
-        if(fullBoard())
-        {
-            result("Draw")
-        }
+
 
     }
 
@@ -104,11 +106,11 @@ class Jogo : AppCompatActivity() {
 
     private fun result(title: String)
     {
-        val message = "\nNoughts $noughtsScore\n\nCrosses $crossesScore"
+        val message = "\n Jogador 1 $PontoJgdr2\n\n Jogador2 $PontoJgdr1"
         AlertDialog.Builder(this)
             .setTitle(title)
             .setMessage(message)
-            .setPositiveButton("Reset")
+            .setPositiveButton("Novo Jogo")
             { _,_ ->
                 resetBoard()
             }
@@ -147,6 +149,8 @@ class Jogo : AppCompatActivity() {
         if(button.text != "")
             return
 
+
+
         if(currentTurn == Turn.jogador1)
         {
             button.text = NOUGHT
@@ -162,13 +166,13 @@ class Jogo : AppCompatActivity() {
 
     private fun setTurnLabel()
     {
-        var turnText = ""
+        var Ajogar = ""
         if(currentTurn == Turn.jogador1)
-            turnText = "Turn $CROSS"
+            Ajogar = "Vez Jogador 1"
         else if(currentTurn == Turn.jogador2)
-            turnText = "Turn $NOUGHT"
+            Ajogar = "Vez Jogador 2"
 
-        binding.turnTV.text = turnText
+        binding.turnTV.text = Ajogar
     }
 
     companion object

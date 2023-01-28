@@ -1,0 +1,10 @@
+{
+    "PostgreSQL":
+        {
+            "user": "user",
+            "host": "localhost",
+            "database": "projeto",
+            "password": "password",
+            "port": "9090"
+        }
+}

@@ -10,9 +10,9 @@
         android:id="@+id/Btn1"
         android:layout_width="167dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="45dp"
         android:text="Jogar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_def"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -20,9 +20,9 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="128dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginBottom="487dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="93dp"
         android:fontFamily="sans-serif"
         android:text="Jogo do Galo"
         android:textSize="20dp"
@@ -37,4 +37,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
+
+    <Button
+        android:id="@+id/btn_def"
+        android:layout_width="167dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="388dp"
+        android:text="Definições"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Btn1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

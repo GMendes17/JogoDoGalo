@@ -161,13 +161,13 @@ class Jogo : AppCompatActivity() {
     }
 
     private fun setTurnLabel() {
-        var Ajogar = ""
+        var ajogar = ""
         if (currentTurn == Turn.jogador1)
-            Ajogar = "Vez Jogador 1"
+            ajogar = "Vez Jogador 1"
         else if (currentTurn == Turn.jogador2)
-            Ajogar = "Vez Jogador 2"
+            ajogar = "Vez Jogador 2"
 
-        binding.turnTV.text = Ajogar
+        binding.turnTV.text = ajogar
     }
 
     companion object {

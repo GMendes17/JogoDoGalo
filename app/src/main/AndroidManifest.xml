@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,11 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JogoDoGalo"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Definicoes"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Menu"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,8 +36,6 @@
             android:name=".Jogo"
             android:exported="false"
             android:label="@string/app_name">
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

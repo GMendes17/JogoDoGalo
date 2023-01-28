@@ -28,6 +28,9 @@ class Jogo : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    var peca1 = R.drawable.x
+    var peca2 = R.drawable.o
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -170,9 +173,8 @@ class Jogo : AppCompatActivity() {
         binding.turnTV.text = ajogar
     }
 
-    companion object {
-        const val peca1 = R.drawable.x
-        const val peca2 = R.drawable.o
-    }
+
+
+
 
 }

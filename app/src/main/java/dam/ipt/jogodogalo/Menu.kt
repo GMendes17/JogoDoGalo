@@ -17,11 +17,20 @@ class Menu : AppCompatActivity() {
 
             Jogar()
         }
+        binding.btnDef.setOnClickListener{
+
+            defs()
+        }
 
     }
     private fun Jogar(){
         val jogo = Intent(this,Jogo::class.java)
         startActivity(jogo)
+    }
+
+    private fun defs(){
+        val defs = Intent(this,Definicoes::class.java)
+        startActivity(defs)
     }
 
 }

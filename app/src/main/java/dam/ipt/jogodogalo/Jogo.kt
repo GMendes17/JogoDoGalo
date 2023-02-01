@@ -110,10 +110,8 @@ class Jogo : AppCompatActivity() {
 
 
     private fun result(title: String) {
-        val message = "\n Jogador 1 - $PontoJgdr1\n\n Jogador2 - $PontoJgdr2"
         AlertDialog.Builder(this)
             .setTitle(title)
-            .setMessage(message)
             .setPositiveButton("Novo Jogo")
             { _, _ ->
                 resetBoard()

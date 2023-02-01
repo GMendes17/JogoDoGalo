@@ -38,6 +38,7 @@ class Jogo : AppCompatActivity() {
         initBoard()
         binding.turnTV.text = "Vez " + currentTurn.toString()
 
+
     }
 
 
@@ -63,13 +64,13 @@ class Jogo : AppCompatActivity() {
 
             PontoJgdr2++
             result("Jogador 2 Ganha")
-            binding.vit2.text = "Jogador 2 " + PontoJgdr2
+            binding.vit2.text = "Jogador 2 : $PontoJgdr2"
 
         } else if (checkForVictory(peca1)) {
 
             PontoJgdr1++
             result("Jogador 1 Ganha")
-            binding.vit1.text = "Jogador 1 " + PontoJgdr2
+            binding.vit1.text = "Jogador 1 : $PontoJgdr1"
 
         } else if (fullBoard()) {
             result("Empate")
@@ -150,12 +151,12 @@ class Jogo : AppCompatActivity() {
 
 
         if (currentTurn == Turn.jogador1) {
-            button.setImageResource(R.drawable.o)
-            button.tag = R.drawable.o
-            currentTurn = Turn.jogador2
-        } else if (currentTurn == Turn.jogador2) {
             button.setImageResource(R.drawable.x)
             button.tag = R.drawable.x
+            currentTurn = Turn.jogador2
+        } else if (currentTurn == Turn.jogador2) {
+            button.setImageResource(R.drawable.o)
+            button.tag = R.drawable.o
             currentTurn = Turn.jogador1
         }
         setTurnLabel()

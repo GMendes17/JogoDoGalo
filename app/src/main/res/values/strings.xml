@@ -5,4 +5,8 @@
     <string name="options">Definições</string>
     <string name="about">Acerca</string>
 
+    <string name="player1">Jogador 1</string>
+    <string name="player2">Jogador 2</string>
+    <string name="save">Guardar</string>
+
 </resources>

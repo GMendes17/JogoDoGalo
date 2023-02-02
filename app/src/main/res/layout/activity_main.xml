@@ -127,7 +127,6 @@
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/vit2"
         app:layout_constraintEnd_toEndOf="@+id/vit2"
-
         app:layout_constraintStart_toStartOf="@+id/vit2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 

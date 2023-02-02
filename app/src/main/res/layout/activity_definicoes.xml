@@ -48,7 +48,7 @@
                 android:id="@+id/ply1InputLayout"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:hint="Jogador 1"
+                android:hint="@string/player1"
                 android:layout_gravity="center"
                 android:layout_below="@+id/imageView1"
                 app:counterEnabled="true"
@@ -84,7 +84,7 @@
                 android:id="@+id/ply2InputLayout"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:hint="Jogador 2"
+                android:hint="@string/player2"
                 android:layout_gravity="center"
                 android:layout_below="@+id/imageView2"
                 app:counterEnabled="true"
@@ -102,12 +102,12 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/btnSav"
-            android:layout_width="132dp"
-            android:layout_height="47dp"
+            android:id="@+id/btnSave"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:text="Salvar"
+            android:text="@string/save"
             android:layout_below="@+id/layout2" />
 
     </RelativeLayout>

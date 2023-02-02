@@ -40,10 +40,10 @@ class Jogo : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         initBoard()
-        binding.turnTV.text = "Vez Jogador 1"
+        binding.turnTV.text = "Vez $jogador1"
 
-        binding.vit1.text = "Jogador 1 : $PontoJgdr1"
-        binding.vit2.text = "Jogador 2 : $PontoJgdr2"
+        binding.vit1.text = "$jogador1 : $PontoJgdr1"
+        binding.vit2.text = "$jogador2 : $PontoJgdr2"
 
         if (peca1 == null)
             peca1 = BitmapFactory.decodeResource(resources, R.drawable.x)
@@ -74,14 +74,14 @@ class Jogo : AppCompatActivity() {
         if (checkForVictory("peca2")) {
 
             PontoJgdr2++
-            result("Jogador 2 Ganha")
-            binding.vit2.text = "Jogador 2 : $PontoJgdr2"
+            result("$jogador2 Ganha")
+            binding.vit2.text = "$jogador2 : $PontoJgdr2"
 
         } else if (checkForVictory("peca1")) {
 
             PontoJgdr1++
-            result("Jogador 1 Ganha")
-            binding.vit1.text = "Jogador 1 : $PontoJgdr1"
+            result("$jogador1 Ganha")
+            binding.vit1.text = "$jogador1 : $PontoJgdr1"
 
         } else if (fullBoard()) {
             result("Empate")
@@ -176,9 +176,9 @@ class Jogo : AppCompatActivity() {
     private fun setTurnLabel() {
         var ajogar = ""
         if (currentTurn == Turn.jogador1)
-            ajogar = "Vez Jogador 1"
+            ajogar = "Vez $jogador1"
         else if (currentTurn == Turn.jogador2)
-            ajogar = "Vez Jogador 2"
+            ajogar = "Vez $jogador2"
 
         binding.turnTV.text = ajogar
     }
@@ -187,10 +187,13 @@ class Jogo : AppCompatActivity() {
     companion object {
         var peca1: Bitmap? = null
         var peca2: Bitmap? = null
+
+        var jogador1: String = "Jogador 1"
+        var jogador2: String = "Jogador 2"
     }
 
     /**
-     * Voltar ao menu quando pressionado o voltar
+     * Voltar ao login quando pressionado home
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

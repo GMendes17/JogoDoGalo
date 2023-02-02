@@ -59,8 +59,8 @@
 
     <Button
         android:id="@+id/Btn1"
-        android:layout_width="170dp"
-        android:layout_height="55dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:layout_marginBottom="250dp"
         android:text="@string/play"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,8 +70,8 @@
 
     <Button
         android:id="@+id/btn_def"
-        android:layout_width="170dp"
-        android:layout_height="55dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:text="@string/options"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,8 +79,8 @@
 
     <Button
         android:id="@+id/btn_about"
-        android:layout_width="170dp"
-        android:layout_height="55dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:text="@string/about"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

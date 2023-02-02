@@ -16,6 +16,7 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,9 +36,6 @@ class Definicoes : AppCompatActivity() {
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
     lateinit var addImage: ImageView
 
-    var peca1 = false
-    var peca2 = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_definicoes)
@@ -53,18 +51,24 @@ class Definicoes : AppCompatActivity() {
         if (Jogo.peca2 == null)
             Jogo.peca2 = BitmapFactory.decodeResource(resources, R.drawable.o)
 
+
+
+        if (Jogo.jogador1 != "Jogador 1")
+            binding.ply1Input.setText(Jogo.jogador1, TextView.BufferType.EDITABLE)
+
+        if (Jogo.jogador2 != "Jogador 2")
+            binding.ply2Input.setText(Jogo.jogador2, TextView.BufferType.EDITABLE)
+
+
+
         binding.imageView1.setImageBitmap(Jogo.peca1)
         binding.imageView2.setImageBitmap(Jogo.peca2)
 
         binding.imageView1.setOnClickListener{
-            peca1 = true
-            peca2 = false
             escolherImg(this, binding.imageView1)
         }
 
         binding.imageView2.setOnClickListener{
-            peca1 = false
-            peca2 = true
             escolherImg(this, binding.imageView2)
 
         }
@@ -78,18 +82,8 @@ class Definicoes : AppCompatActivity() {
                     val bundle: Bundle? = result.data!!.extras
                     val bitmap = bundle?.get("data") as Bitmap?
 
-                    if(bitmap != null){
+                    if(bitmap != null)
                         addImage.setImageBitmap(bitmap)
-
-                        if (peca1){
-                            peca1 = false
-                            Jogo.peca1 = bitmap
-                        }else{
-                            peca2 = false
-                            Jogo.peca2 = bitmap
-                        }
-
-                    }
 
                 }
             }
@@ -102,18 +96,8 @@ class Definicoes : AppCompatActivity() {
 
                     val selectedImage: Uri? = result.data?.data
 
-                    if(selectedImage != null){
+                    if(selectedImage != null)
                         addImage.setImageURI(selectedImage)
-
-                        if (peca1){
-                            peca1 = false
-                            Jogo.peca1 = convertToBitmap(addImage.drawable, addImage.drawable.intrinsicWidth, addImage.drawable.intrinsicHeight)
-                        }else{
-                            peca2 = false
-                            Jogo.peca2 = convertToBitmap(addImage.drawable, addImage.drawable.intrinsicWidth, addImage.drawable.intrinsicHeight)
-                        }
-
-                    }
                 }
             }
 
@@ -142,6 +126,22 @@ class Definicoes : AppCompatActivity() {
                     alert.show()
                 }
             }
+
+        binding.btnSave.setOnClickListener{
+            Jogo.peca1 = convertToBitmap(binding.imageView1.drawable, binding.imageView1.drawable.intrinsicWidth, binding.imageView1.drawable.intrinsicHeight)
+            Jogo.peca2 = convertToBitmap(binding.imageView2.drawable, binding.imageView2.drawable.intrinsicWidth, binding.imageView2.drawable.intrinsicHeight)
+
+            val player1Name = binding.ply1Input.text.toString()
+            val player2Name = binding.ply2Input.text.toString()
+
+            if (player1Name.isNotEmpty())
+                Jogo.jogador1 = player1Name
+
+            if (player2Name.isNotEmpty())
+                Jogo.jogador2 = player2Name
+
+            Toast.makeText(this, "Definições guardadas com sucesso", Toast.LENGTH_SHORT).show()
+        }
     }
 
     /**
@@ -212,7 +212,7 @@ class Definicoes : AppCompatActivity() {
     }
 
     /**
-     * Voltar ao menu quando pressionado o voltar
+     * Voltar ao login quando pressionado home
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

@@ -212,7 +212,7 @@ class Definicoes : AppCompatActivity() {
     }
 
     /**
-     * Voltar ao login quando pressionado home
+     * Voltar ao menu quando pressionado o voltar
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

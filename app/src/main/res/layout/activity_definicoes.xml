@@ -22,45 +22,94 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
-        android:id="@+id/btn_p1"
-        android:layout_width="132dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="112dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.146"
-        app:layout_constraintStart_toStartOf="parent" />
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/btn_p2"
-        android:layout_width="132dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="112dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_p1" />
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="132dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="28dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/btn_p1"
-        app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="132dp"
+                android:layout_height="132dp"
+                android:layout_centerHorizontal="true"/>
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/ply1InputLayout"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Jogador 1"
+                android:layout_gravity="center"
+                android:layout_below="@+id/imageView1"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:helperTextTextColor="@color/red">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="132dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginBottom="28dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/btn_p2"
-        app:layout_constraintStart_toStartOf="parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ply1Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:maxLength="20"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/layout1">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="132dp"
+                android:layout_height="132dp"
+                android:layout_centerHorizontal="true" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/ply2InputLayout"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Jogador 2"
+                android:layout_gravity="center"
+                android:layout_below="@+id/imageView2"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:helperTextTextColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ply2Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:maxLength="20"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnSav"
+            android:layout_width="132dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="Salvar"
+            android:layout_below="@+id/layout2" />
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

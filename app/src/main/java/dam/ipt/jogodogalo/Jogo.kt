@@ -40,7 +40,7 @@ class Jogo : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         initBoard()
-        binding.turnTV.text = "Vez " + currentTurn.toString()
+        binding.turnTV.text = "Vez Jogador 1"
 
         binding.vit1.text = "Jogador 1 : $PontoJgdr1"
         binding.vit2.text = "Jogador 2 : $PontoJgdr2"
@@ -190,7 +190,7 @@ class Jogo : AppCompatActivity() {
     }
 
     /**
-     * Voltar ao login quando pressionado home
+     * Voltar ao menu quando pressionado o voltar
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

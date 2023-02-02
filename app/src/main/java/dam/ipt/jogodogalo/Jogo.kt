@@ -1,10 +1,13 @@
 package dam.ipt.jogodogalo
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
@@ -28,17 +31,25 @@ class Jogo : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    var peca1 = R.drawable.x
-    var peca2 = R.drawable.o
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         initBoard()
         binding.turnTV.text = "Vez " + currentTurn.toString()
 
+        binding.vit1.text = "Jogador 1 : $PontoJgdr1"
+        binding.vit2.text = "Jogador 2 : $PontoJgdr2"
 
+        if (peca1 == null)
+            peca1 = BitmapFactory.decodeResource(resources, R.drawable.x)
+
+        if (peca2 == null)
+            peca2 = BitmapFactory.decodeResource(resources, R.drawable.o)
     }
 
 
@@ -60,13 +71,13 @@ class Jogo : AppCompatActivity() {
             return
         addToBoard(view)
 
-        if (checkForVictory(peca2)) {
+        if (checkForVictory("peca2")) {
 
             PontoJgdr2++
             result("Jogador 2 Ganha")
             binding.vit2.text = "Jogador 2 : $PontoJgdr2"
 
-        } else if (checkForVictory(peca1)) {
+        } else if (checkForVictory("peca1")) {
 
             PontoJgdr1++
             result("Jogador 1 Ganha")
@@ -79,7 +90,7 @@ class Jogo : AppCompatActivity() {
 
     }
 
-    private fun checkForVictory(s: Int): Boolean {
+    private fun checkForVictory(s: String): Boolean {
 
         //Horizontal Victory
         if (match(binding.a1, s) && match(binding.a2, s) && match(binding.a3, s))
@@ -107,7 +118,7 @@ class Jogo : AppCompatActivity() {
         return false
     }
 
-    private fun match(button: ImageButton, symbol: Int): Boolean = button.tag == symbol
+    private fun match(button: ImageButton, symbol: String): Boolean = button.tag == symbol
 
 
     private fun result(title: String) {
@@ -151,12 +162,12 @@ class Jogo : AppCompatActivity() {
 
 
         if (currentTurn == Turn.jogador1) {
-            button.setImageResource(R.drawable.x)
-            button.tag = R.drawable.x
+            button.setImageBitmap(peca1)
+            button.tag = "peca1"
             currentTurn = Turn.jogador2
         } else if (currentTurn == Turn.jogador2) {
-            button.setImageResource(R.drawable.o)
-            button.tag = R.drawable.o
+            button.setImageBitmap(peca2)
+            button.tag = "peca2"
             currentTurn = Turn.jogador1
         }
         setTurnLabel()
@@ -173,7 +184,24 @@ class Jogo : AppCompatActivity() {
     }
 
 
+    companion object {
+        var peca1: Bitmap? = null
+        var peca2: Bitmap? = null
+    }
 
-
+    /**
+     * Voltar ao login quando pressionado home
+     */
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this, Menu::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
 }

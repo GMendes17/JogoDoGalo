@@ -16,9 +16,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center"
-            android:minHeight="?attr/actionBarSize" />
+            android:minHeight="?attr/actionBarSize"
+            android:orientation="horizontal" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -53,6 +53,8 @@
 
 
         <LinearLayout style="@style/row">
+
+
 
             <ImageButton
                 android:id="@+id/a1"
@@ -90,7 +92,8 @@
 
             <ImageButton
                 android:id="@+id/b3"
-                style="@style/column" />
+                style="@style/column"
+                />
 
         </LinearLayout>
 
@@ -119,6 +122,122 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <View
+            android:id="@+id/VitHor1"
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="225dp"
+            android:background="#E91E63"
+            android:visibility="invisible"/>
+
+        <View
+            android:id="@+id/VitHor2"
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="120dp"
+            android:background="#E91E63"
+            android:visibility="invisible"/>
+
+        <View
+            android:id="@+id/VitHor3"
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="120dp"
+            android:background="#E91E63"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <View
+            android:id="@+id/Vitver1"
+            android:layout_width="2dp"
+            android:layout_height="350dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="170dp"
+            android:background="#E91E63"
+            android:visibility="invisible"/>
+
+        <View
+            android:id="@+id/Vitver2"
+            android:layout_width="2dp"
+            android:layout_height="350dp"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="170dp"
+            android:background="#E91E63"
+            android:visibility="invisible"/>
+
+        <View
+            android:id="@+id/Vitver3"
+            android:layout_width="2dp"
+            android:layout_height="350dp"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="170dp"
+            android:background="#E91E63"
+            android:visibility="invisible"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+
+
+        <View
+            android:id="@+id/Vitdig1"
+            android:layout_width="2dp"
+            android:layout_height="450dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="125dp"
+
+            android:rotation="45"
+
+            android:background="#E91E63"
+            android:visibility="invisible"/>
+
+
+        <View
+            android:id="@+id/Vitdig2"
+            android:layout_width="2dp"
+            android:layout_height="450dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="120dp"
+            android:rotation="-45"
+            android:background="#E91E63"
+            android:visibility="invisible"/>/>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
     <TextView
         android:id="@+id/vit1"
         android:layout_width="wrap_content"
@@ -140,5 +259,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/vit1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vit1" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

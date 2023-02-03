@@ -9,4 +9,9 @@
     <string name="player2">Jogador 2</string>
     <string name="save">Guardar</string>
 
+    <string name="login">Login</string>
+    <string name="username">Nome de Utilizador</string>
+    <string name="pass">Palavra-Passe</string>
+    <string name="passConfirm">Confirmar Palavra-Passe</string>
+
 </resources>

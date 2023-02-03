@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,22 +16,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JogoDoGalo"
         tools:targetApi="31">
-
         <activity
-            android:name=".Definicoes"
+            android:name=".ui.activity.Acerca"
             android:exported="true"
-            android:theme="@style/Theme.JogoDoGalo.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JogoDoGalo.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".Menu"
+            android:name=".ui.activity.Login"
             android:exported="true"
-            android:theme="@style/Theme.JogoDoGalo.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JogoDoGalo.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activity.Definicoes"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JogoDoGalo.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.activity.Menu"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JogoDoGalo.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,16 +58,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".Jogo"
+            android:name=".ui.activity.Jogo"
             android:exported="true"
-            android:theme="@style/Theme.JogoDoGalo.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JogoDoGalo.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
+
 </manifest>

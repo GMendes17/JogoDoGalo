@@ -1,4 +1,4 @@
-package dam.ipt.jogodogalo
+package dam.ipt.jogodogalo.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,23 +14,23 @@ class Menu : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.Btn1.setOnClickListener{
-
-            Jogar()
+            val jogo = Intent(this,Jogo::class.java)
+            startActivity(jogo)
+            finish()
         }
         binding.btnDef.setOnClickListener{
+            val defs = Intent(this,Definicoes::class.java)
+            startActivity(defs)
+            finish()
+        }
 
-            defs()
+        binding.btnAbout.setOnClickListener{
+            val acerca = Intent(this, Acerca::class.java)
+            startActivity(acerca)
+            finish()
         }
 
     }
-    private fun Jogar(){
-        val jogo = Intent(this,Jogo::class.java)
-        startActivity(jogo)
-    }
 
-    private fun defs(){
-        val defs = Intent(this,Definicoes::class.java)
-        startActivity(defs)
-    }
 
 }

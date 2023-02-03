@@ -1,4 +1,4 @@
-package dam.ipt.jogodogalo
+package dam.ipt.jogodogalo.ui.activity
 
 import android.Manifest
 import android.app.AlertDialog
@@ -21,10 +21,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import dam.ipt.jogodogalo.R
 import dam.ipt.jogodogalo.databinding.ActivityDefinicoesBinding
-import dam.ipt.jogodogalo.databinding.ActivityMenuBinding
-
-
 
 class Definicoes : AppCompatActivity() {
 

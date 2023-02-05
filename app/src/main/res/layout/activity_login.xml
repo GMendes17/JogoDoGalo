@@ -90,26 +90,25 @@
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:textColor="@color/white"
+            android:layout_marginTop="10dp"
             android:id="@+id/submit_button"
             android:layout_gravity="center"/>
 
         <Button
+            android:id="@+id/button_guest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/guest"
-            android:textColor="@color/white"
-            android:layout_marginTop="16dp"
-            android:id="@+id/button_guest"
-            android:layout_gravity="center"/>
+            android:textColor="@color/white" />
 
         <Button
+            android:id="@+id/button_create_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/create_account"
-            android:textColor="@color/white"
-            android:layout_marginTop="16dp"
-            android:id="@+id/button_create_account"
-            android:layout_gravity="center"/>
+            android:textColor="@color/white" />
 
 
     </LinearLayout>

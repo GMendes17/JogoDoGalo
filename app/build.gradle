@@ -38,6 +38,11 @@ android {
 
 dependencies {
 
+    //LifeCicle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
+    //Data Store
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'

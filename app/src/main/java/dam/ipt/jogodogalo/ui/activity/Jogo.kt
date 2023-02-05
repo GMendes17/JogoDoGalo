@@ -1,20 +1,27 @@
 package dam.ipt.jogodogalo.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
+import androidx.datastore.core.DataStore
 import dam.ipt.jogodogalo.R
 import dam.ipt.jogodogalo.data.Session
 import dam.ipt.jogodogalo.databinding.ActivityJogoBinding
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class Jogo : AppCompatActivity() {
 
@@ -44,8 +51,7 @@ class Jogo : AppCompatActivity() {
         initBoard()
         binding.turnTV.text = "Vez $jogador1"
 
-        binding.vit1.text = "$jogador1 : $PontoJgdr1"
-        binding.vit2.text = "$jogador2 : $PontoJgdr2"
+        readPoints()
 
         if (peca1 == null)
             peca1 = BitmapFactory.decodeResource(resources, R.drawable.x)
@@ -62,6 +68,8 @@ class Jogo : AppCompatActivity() {
             alertBuilder.setMessage("Tem a certeza de que quer apagar os pontos?")
                 .setNegativeButton("Não", null)
                 .setPositiveButton("Sim") { dialog, which ->
+
+                    savePoints(0, 0)
 
                 }
             val alert = alertBuilder.create()
@@ -104,7 +112,7 @@ class Jogo : AppCompatActivity() {
             result("Empate")
         }
 
-
+        savePoints(PontoJgdr1, PontoJgdr2)
     }
 
     private fun setVisible(view: View){
@@ -250,8 +258,71 @@ class Jogo : AppCompatActivity() {
         binding.turnTV.text = ajogar
     }
 
+    private suspend fun save(key: String, value: String) {
+        val dataStoreKey = stringPreferencesKey(key)
+        dataStore.edit { pontos ->
+            pontos[dataStoreKey] = value
+        }
+    }
+
+    private suspend fun read(key: String): String? {
+        val dataStoreKey = stringPreferencesKey(key)
+        val preferences = dataStore.data.first()
+        return preferences[dataStoreKey]
+    }
+
+    private fun savePoints(jgdr1P: Int, jgdr2P: Int) {
+        var player = "default"
+
+        if (Session().getUser().id != 0)
+            player = Session().getUser().id.toString()
+
+        lifecycleScope.launch {
+            save(
+                player,
+                "$jgdr1P:$jgdr2P"
+            )
+
+            PontoJgdr1 = jgdr1P
+            PontoJgdr2 = jgdr2P
+
+            updatePointsView()
+        }
+    }
+
+    private fun readPoints() {
+        var player = "default"
+
+        if (Session().getUser().id != 0)
+            player = Session().getUser().id.toString()
+
+        lifecycleScope.launch {
+
+            var ply1P = 0
+            var ply2P = 0
+
+            read(player)?.let {
+                val points = it.split(":")
+                ply1P = points[0].toInt()
+                ply2P = points[1].toInt()
+            }
+
+            PontoJgdr1 = ply1P
+            PontoJgdr2 = ply2P
+
+            updatePointsView()
+        }
+    }
+
+    private fun updatePointsView() {
+        binding.vit1.text = "$jogador1 : $PontoJgdr1"
+        binding.vit2.text = "$jogador2 : $PontoJgdr2"
+    }
+
 
     companion object {
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("pontos")
+
         var peca1: Bitmap? = null
         var peca2: Bitmap? = null
 

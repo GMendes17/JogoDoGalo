@@ -103,7 +103,8 @@
             android:text="@string/register"
             android:textColor="@color/white"
             android:id="@+id/submit_button"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
 
 
     </LinearLayout>

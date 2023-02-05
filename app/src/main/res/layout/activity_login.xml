@@ -93,6 +93,24 @@
             android:id="@+id/submit_button"
             android:layout_gravity="center"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guest"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:id="@+id/button_guest"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_account"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:id="@+id/button_create_account"
+            android:layout_gravity="center"/>
+
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

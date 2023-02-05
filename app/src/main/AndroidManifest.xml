@@ -17,6 +17,15 @@
         android:theme="@style/Theme.JogoDoGalo"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.Registar"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JogoDoGalo.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activity.Acerca"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -30,6 +39,12 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.JogoDoGalo.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -48,12 +63,6 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.JogoDoGalo.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

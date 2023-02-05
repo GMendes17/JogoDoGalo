@@ -9,11 +9,14 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.media.MediaMetadataRetriever.BitmapParams
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.util.Base64
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,8 +24,15 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
+import com.android.volley.Response
 import dam.ipt.jogodogalo.R
+import dam.ipt.jogodogalo.data.Session
 import dam.ipt.jogodogalo.databinding.ActivityDefinicoesBinding
+import dam.ipt.jogodogalo.volley.VolleyRequest
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 
 class Definicoes : AppCompatActivity() {
 
@@ -61,6 +71,20 @@ class Definicoes : AppCompatActivity() {
 
         binding.imageView1.setImageBitmap(Jogo.peca1)
         binding.imageView2.setImageBitmap(Jogo.peca2)
+
+
+        if (Session().getUser().id != 0) {
+            binding.userPass.doOnTextChanged { text, start, before, count ->
+                binding.userPassLayout.error = null
+            }
+
+            binding.imageView1.setImageBitmap(base64ToBitmap(Session().getUser().img))
+
+        }else{
+            binding.userPass.isVisible = false;
+            binding.userPassLayout.isVisible = false;
+        }
+
 
         binding.imageView1.setOnClickListener{
             escolherImg(this, binding.imageView1)
@@ -126,6 +150,51 @@ class Definicoes : AppCompatActivity() {
             }
 
         binding.btnSave.setOnClickListener{
+
+            if (Session().getUser().id != 0) {
+
+                val peca = convertToBitmap(binding.imageView1.drawable, binding.imageView1.drawable.intrinsicWidth, binding.imageView1.drawable.intrinsicHeight)
+                val usernameText = binding.ply1Input.text.toString()
+                var passwordText = binding.userPass.text.toString()
+
+                if (passwordText.isEmpty())
+                    passwordText = Session().getUser().password
+
+                if (usernameText.isNotEmpty()) {
+
+                    //preparar pedido para a API
+                    val response = Response.Listener<String> { response ->
+                        //Log.e("res", response.toString())
+                        //caso a resposta do API contenha "foi eliminado" faz logout
+                        if (response.trim('"').contains("foi eliminado")) {
+                            val intent = Intent(this, Login::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+
+                    val responseError = Response.ErrorListener { error ->
+                        Log.e("res", error.toString())
+                        Toast.makeText(
+                            this,
+                            "Conecte-se à internet para editar o utilizador",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    val jsonBody = JSONObject()
+                    jsonBody.put("username", usernameText)
+                    jsonBody.put("password", passwordText)
+                    jsonBody.put("img", bitmapToBase64(peca))
+
+                    VolleyRequest().User().update(this, Session().getUser().id.toString(), response, responseError, jsonBody)
+
+                }else{
+                    binding.ply1InputLayout.error = "O Nome de Utilizador é obrigatório"
+                    return@setOnClickListener
+                }
+            }
+
             Jogo.peca1 = convertToBitmap(binding.imageView1.drawable, binding.imageView1.drawable.intrinsicWidth, binding.imageView1.drawable.intrinsicHeight)
             Jogo.peca2 = convertToBitmap(binding.imageView2.drawable, binding.imageView2.drawable.intrinsicWidth, binding.imageView2.drawable.intrinsicHeight)
 
@@ -207,6 +276,28 @@ class Definicoes : AppCompatActivity() {
         drawable.setBounds(0, 0, widthPixels, heightPixels)
         drawable.draw(canvas)
         return bitmap
+    }
+
+    companion object {
+        /**
+         * Encriptada uma imagem
+         */
+        fun bitmapToBase64(image: Bitmap): String {
+            val baos = ByteArrayOutputStream()
+            image.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val byte: ByteArray = baos.toByteArray()
+
+            return Base64.encodeToString(byte, Base64.DEFAULT).replace("\n", "")
+        }
+
+        /**
+         * Desencriptada uma imagem
+         */
+        fun base64ToBitmap(imageStr: String): Bitmap? {
+            val byte = Base64.decode(imageStr, Base64.DEFAULT)
+
+            return BitmapFactory.decodeByteArray(byte, 0, byte.size)
+        }
     }
 
     /**

@@ -7,9 +7,12 @@
     tools:context=".ui.activity.Jogo">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.JogoDoGalo.AppBarOverlay"
+        app:layout_constraintEnd_toStartOf="@+id/turnTV"
+        app:layout_constraintStart_toStartOf="@+id/turnTV"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
@@ -54,8 +57,6 @@
 
         <LinearLayout style="@style/row">
 
-
-
             <ImageButton
                 android:id="@+id/a1"
                 style="@style/column" />
@@ -92,8 +93,7 @@
 
             <ImageButton
                 android:id="@+id/b3"
-                style="@style/column"
-                />
+                style="@style/column" />
 
         </LinearLayout>
 
@@ -123,9 +123,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <View
@@ -135,7 +140,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="225dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <View
             android:id="@+id/VitHor2"
@@ -144,7 +149,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="120dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <View
             android:id="@+id/VitHor3"
@@ -153,13 +158,18 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="120dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <View
@@ -169,7 +179,7 @@
             android:layout_marginLeft="80dp"
             android:layout_marginTop="170dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <View
             android:id="@+id/Vitver2"
@@ -178,7 +188,7 @@
             android:layout_marginLeft="125dp"
             android:layout_marginTop="170dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <View
             android:id="@+id/Vitver3"
@@ -187,56 +197,45 @@
             android:layout_marginLeft="125dp"
             android:layout_marginTop="170dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>
-
+            android:visibility="invisible" />
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <View
+
             android:id="@+id/Vitdig1"
             android:layout_width="2dp"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_marginLeft="200dp"
-            android:layout_marginTop="125dp"
-
-            android:rotation="45"
-
+            android:layout_marginTop="150dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>
-
+            android:visibility="invisible"
+            android:rotation="45"/>
 
         <View
+
             android:id="@+id/Vitdig2"
             android:layout_width="2dp"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="120dp"
-            android:rotation="-45"
+            android:layout_marginTop="145dp"
             android:background="#E91E63"
-            android:visibility="invisible"/>/>
-
-
-
-
+            android:visibility="invisible"
+            android:rotation="-45"/>
 
     </LinearLayout>
-
-
-
-
-
-
-
-
 
     <TextView
         android:id="@+id/vit1"
@@ -253,13 +252,21 @@
         android:id="@+id/vit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/vit1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vit1" />
 
-
+    <Button
+        android:id="@+id/butReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

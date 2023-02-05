@@ -1,8 +1,11 @@
 package dam.ipt.jogodogalo.ui.activity
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -22,6 +25,8 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
         //botoes utilizados na view
         val loginButton = binding.submitButton
+        val guestButton = binding.buttonGuest
+        val createAccount = binding.buttonCreateAccount
         val username = binding.nameInput
         val password = binding.passInput
 
@@ -32,6 +37,14 @@ class Login : AppCompatActivity() {
         password.doOnTextChanged { text, start, before, count ->
             binding.passInputLayout.error = null
         }
+
+        Jogo.peca1 = null
+        Jogo.peca2 = null
+
+        Jogo.jogador1 = "Jogador 1"
+        Jogo.jogador2 = "Jogador 2"
+
+        Session().setUser(0, "", "", "")
 
         //listener do login
         loginButton.setOnClickListener{
@@ -47,6 +60,11 @@ class Login : AppCompatActivity() {
                         if (res[0].toDoubleOrNull() != null){
                             //preparar a sessão
                             Session().setUser(res[0].toInt(), usernameTxt, passwordTxt, res[1])
+                            Jogo.jogador1 = usernameTxt
+
+                            /*val byte = Base64.decode(res[1], Base64.DEFAULT)
+                            Jogo.peca1 = BitmapFactory.decodeByteArray(byte, 0, byte.size)*/
+
                             val intent = Intent(this, Menu::class.java)
                             startActivity(intent)
                             finish()
@@ -74,6 +92,20 @@ class Login : AppCompatActivity() {
                 binding.nameInputLayout.error = "O Nome de Utilizador é obrigatório"
             }
 
+        }
+
+        //listener do convidado
+        guestButton.setOnClickListener{
+            val intent = Intent(this, Menu::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        //listener de criar conta
+        createAccount.setOnClickListener{
+            val intent = Intent(this, Registar::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }

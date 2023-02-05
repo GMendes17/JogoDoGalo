@@ -3,6 +3,7 @@ package dam.ipt.jogodogalo.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dam.ipt.jogodogalo.data.Session
 import dam.ipt.jogodogalo.databinding.ActivityMenuBinding
 
 class Menu : AppCompatActivity() {
@@ -27,6 +28,13 @@ class Menu : AppCompatActivity() {
         binding.btnAbout.setOnClickListener{
             val acerca = Intent(this, Acerca::class.java)
             startActivity(acerca)
+            finish()
+        }
+
+        binding.logoutButton.setOnClickListener{
+            Session().setUser(0,"","","")
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
             finish()
         }
 

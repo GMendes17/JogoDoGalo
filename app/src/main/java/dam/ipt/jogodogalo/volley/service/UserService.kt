@@ -15,8 +15,8 @@ class UserService(private val api: String)  {
         VolleyRequest().newStringRequest(context, api, Request.Method.POST, response, responseError, jsonBody)
 
 
-    fun update(context: Context, username: String, response: Response.Listener<String>, responseError: Response.ErrorListener, jsonBody: JSONObject
+    fun update(context: Context, id: String, response: Response.Listener<String>, responseError: Response.ErrorListener, jsonBody: JSONObject
     ) =
-        VolleyRequest().newStringRequest(context, "${api}/${username}", Request.Method.PUT, response, responseError, jsonBody)
+        VolleyRequest().newStringRequest(context, "${api}/${id}", Request.Method.PUT, response, responseError, jsonBody)
 
 }

@@ -8,10 +8,17 @@
     <string name="player1">Jogador 1</string>
     <string name="player2">Jogador 2</string>
     <string name="save">Guardar</string>
+    <string name="delete">Apagar pontos</string>
 
     <string name="login">Login</string>
     <string name="username">Nome de Utilizador</string>
     <string name="pass">Palavra-Passe</string>
     <string name="passConfirm">Confirmar Palavra-Passe</string>
+    <string name="create_account">Criar Conta</string>
+    <string name="register">Registar</string>
+    <string name="guest">Convidado</string>
+
+    <string name="gonca">Gonçalo Mendes, nº 23042</string>
+    <string name="pmmgasp">Pedro Gaspar, nº 23038</string>
 
 </resources>

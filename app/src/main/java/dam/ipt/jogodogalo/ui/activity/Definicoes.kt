@@ -165,6 +165,7 @@ class Definicoes : AppCompatActivity() {
                     //preparar pedido para a API
                     val response = Response.Listener<String> { response ->
                         //Log.e("res", response.toString())
+                        Session().setUser(Session().getUser().id, usernameText, passwordText, bitmapToBase64(peca))
                         //caso a resposta do API contenha "foi eliminado" faz logout
                         if (response.trim('"').contains("foi eliminado")) {
                             val intent = Intent(this, Login::class.java)

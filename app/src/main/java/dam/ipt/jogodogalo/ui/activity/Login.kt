@@ -60,10 +60,9 @@ class Login : AppCompatActivity() {
                         if (res[0].toDoubleOrNull() != null){
                             //preparar a sessão
                             Session().setUser(res[0].toInt(), usernameTxt, passwordTxt, res[1])
-                            Jogo.jogador1 = usernameTxt
 
-                            /*val byte = Base64.decode(res[1], Base64.DEFAULT)
-                            Jogo.peca1 = BitmapFactory.decodeByteArray(byte, 0, byte.size)*/
+                            Jogo.jogador1 = usernameTxt
+                            Jogo.peca1 = Definicoes.base64ToBitmap(res[1])
 
                             val intent = Intent(this, Menu::class.java)
                             startActivity(intent)

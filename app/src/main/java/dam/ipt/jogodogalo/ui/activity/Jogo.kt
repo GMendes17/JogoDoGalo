@@ -59,14 +59,11 @@ class Jogo : AppCompatActivity() {
         if (peca2 == null)
             peca2 = BitmapFactory.decodeResource(resources, R.drawable.o)
 
-        if (Session().getUser().id != 0)
-            peca1 = Definicoes.base64ToBitmap(Session().getUser().img)
-
         binding.butReset.setOnClickListener {
 
             val alertBuilder = android.app.AlertDialog.Builder(this)
             alertBuilder.setMessage("Tem a certeza de que quer apagar os pontos?")
-                .setNegativeButton("Não", null)
+                .setNegativeButton("NÃ£o", null)
                 .setPositiveButton("Sim") { dialog, which ->
 
                     savePoints(0, 0)
@@ -165,8 +162,6 @@ class Jogo : AppCompatActivity() {
             setVisible(binding.Vitver3)
             return true
         }
-
-
 
         //Diagonal Victory
         if (match(binding.a1, s) && match(binding.b2, s) && match(binding.c3, s)){
